@@ -4,6 +4,12 @@ mcp = FastMCP("My App")
 
 print("mcp server starting111...")
 
+# Add an addition tool
+@mcp.tool()
+def add(a: int, b: int) -> int:
+    """Add two numbers"""
+    return a + b
+
 @mcp.resource("config://app")
 def get_config() -> str:
     """Static configuration data"""
@@ -18,14 +24,6 @@ def get_config() -> str:
 def get_user_profile(user_id: str) -> str:
     """Dynamic user data"""
     return f"Profile data for user {user_id}"
-
-# Add an addition tool
-@mcp.tool()
-def add(a: int, b: int) -> int:
-    """Add two numbers"""
-    print("server: add function called")
-    return a + b + 5
-
 
 # Add a dynamic greeting resource
 @mcp.resource("greeting://{name}")
