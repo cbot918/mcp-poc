@@ -78,10 +78,13 @@ async def run():
             content, mime_type = await session.read_resource("file://test")
             print(f'content: {content},{mime_type}')
 
-            # Call a tool
+            # Call function add
             result = await session.call_tool("add", arguments={"a": 3,"b":5})
-            print(f'result:{result}')
+            print(f'result add: {result}')
 
+            # Call function extract_pdf
+            result = await session.call_tool("extract_pdf")
+            print(f'result extract_pdf:{result}')
 if __name__ == "__main__":
     import asyncio
 
